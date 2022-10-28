@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0;
+
+  background: var(--blue-dark);
+  color: var(--gray-100);
+
+  font-size: var(--sm);
+  font-weight: bold;
+
+  transiton: background-color 0.2s ease;
+}
+
+.root:hover {
+  background: var(--blue);
+}

@@ -1,6 +1,6 @@
-import { Task } from "./components/Task";
+import { CreateButton } from "./components/CreateButton";
 import "./styles/global.css";
 
 export function App() {
-  return <Task />;
+  return <CreateButton />;
 }
