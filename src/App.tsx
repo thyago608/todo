@@ -1,6 +1,6 @@
-import { CreateButton } from "./components/CreateButton";
+import { Header } from "./components/Header";
 import "./styles/global.css";
 
 export function App() {
-  return <CreateButton />;
+  return <Header />;
 }
