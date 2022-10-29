@@ -40,9 +40,9 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: var(--gray-400); /* color of the scroll thumb */
+  background-color: var(--gray-400);
   border-radius: 20px;
-  border: 1px solid var(--gray-400); /* creates padding around scroll thumb */
+  border: 1px solid var(--gray-400);
 }
 
 a {
