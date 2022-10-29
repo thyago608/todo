@@ -9,14 +9,22 @@ interface TaskProps {
 }
 
 export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
+  function handleDeleteTask() {
+    onDeleteTask(data.id);
+  }
+
+  function handleCheckedTask() {
+    onCheckedTask(data.id);
+  }
+
   return (
-    <div className={styles.container}>
+    <li className={styles.container}>
       <button
         type="button"
         className={`${
           data.isChecked ? styles.checkedButton : styles.unCheckedButton
         }`}
-        onClick={() => onCheckedTask(data.id)}
+        onClick={handleCheckedTask}
       >
         <div className={styles.containerIcon}>
           <Check size={18} weight="bold" />
@@ -26,10 +34,10 @@ export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
       <button
         type="button"
         className={styles.deleteButton}
-        onClick={() => onDeleteTask(data.id)}
+        onClick={handleDeleteTask}
       >
         <Trash size={18} weight="bold" />
       </button>
-    </div>
+    </li>
   );
 }

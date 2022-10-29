@@ -1,14 +1,28 @@
+@keyframes animation {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .container {
-  padding: 16px 20px;
+  padding: 1rem 1.25rem;
 
   border-radius: 8px;
 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
+  gap: 0.75rem;
 
   background: var(--gray-500);
+
+  animation: animation 0.3s backwards;
 }
 
 .checkedButton,
@@ -19,7 +33,7 @@
   flex: 1;
 
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .checkedButton .containerIcon,
@@ -28,7 +42,7 @@
   height: 18px;
 
   border-radius: 50%;
-  margin-top: 2px;
+  margin-top: 0.125rem;
 }
 
 .checkedButton > p,

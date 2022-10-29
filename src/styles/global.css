@@ -35,6 +35,16 @@ body {
   background: var(--gray-600);
 }
 
+body::-webkit-scrollbar {
+  width: 9px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--gray-400); /* color of the scroll thumb */
+  border-radius: 20px;
+  border: 1px solid var(--gray-400); /* creates padding around scroll thumb */
+}
+
 a {
   text-decoration: none;
 }

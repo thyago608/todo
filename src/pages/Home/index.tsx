@@ -20,13 +20,13 @@ export function Home() {
     setNewTask("");
   }
 
-  function handleDeleteTask(taskId: string) {
+  function deleteTask(taskId: string) {
     const newListTasks = tasks.filter((task) => task.id !== taskId);
 
     setTasks(newListTasks);
   }
 
-  function handleCheckedTask(taskId: string) {
+  function checkedTask(taskId: string) {
     const updatedToDoList = tasks.map((task) =>
       task.id === taskId ? { ...task, isChecked: !task.isChecked } : task
     );
@@ -45,16 +45,16 @@ export function Home() {
   );
 
   const ListTasksComponent = (
-    <div className={styles.list}>
+    <ul className={styles.list}>
       {tasks.map((task) => (
         <Task
           key={task.id}
           data={task}
-          onDeleteTask={handleDeleteTask}
-          onCheckedTask={handleCheckedTask}
+          onDeleteTask={deleteTask}
+          onCheckedTask={checkedTask}
         />
       ))}
-    </div>
+    </ul>
   );
 
   const isNewTaskEmpty = newTask.length === 0;
@@ -71,6 +71,7 @@ export function Home() {
               placeholder="Adicione uma nova tarefa"
               value={newTask}
               onChange={(event) => setNewTask(event.target.value)}
+              autoFocus
             />
             <CreateButton type="submit" disabled={isNewTaskEmpty} />
           </form>
