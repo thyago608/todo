@@ -1,29 +1,33 @@
-import { useState } from "react";
 import { Trash, Check } from "phosphor-react";
+import { ITask } from "types/Task";
 import styles from "./styles.module.css";
 
-export function Task() {
-  const [isChecked, setIsChecked] = useState(false);
+interface TaskProps {
+  data: ITask;
+  onDeleteTask: (id: string) => void;
+  onCheckedTask: (id: string) => void;
+}
 
+export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
   return (
     <div className={styles.container}>
       <button
         type="button"
         className={`${
-          isChecked ? styles.checkedButton : styles.unCheckedButton
+          data.isChecked ? styles.checkedButton : styles.unCheckedButton
         }`}
-        onClick={() => setIsChecked(!isChecked)}
+        onClick={() => onCheckedTask(data.id)}
       >
         <div className={styles.containerIcon}>
           <Check size={18} weight="bold" />
         </div>
-        <p>
-          Integer urna interdum massa libero auctor neque turpis turpis semper.
-          Duis vel sed fames integer.
-        </p>
+        <p>{data.content}</p>
       </button>
-
-      <button type="button" className={styles.deleteButton}>
+      <button
+        type="button"
+        className={styles.deleteButton}
+        onClick={() => onDeleteTask(data.id)}
+      >
         <Trash size={18} weight="bold" />
       </button>
     </div>

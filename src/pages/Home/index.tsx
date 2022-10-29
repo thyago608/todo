@@ -1,17 +1,37 @@
 import { FormEvent, useState } from "react";
-import { CreateButton } from "../../components/CreateButton";
-import { Input } from "../../components/Input";
-import { Task } from "../../components/Task";
+import { v4 } from "uuid";
+import { CreateButton } from "components/CreateButton";
+import { Input } from "components/Input";
+import { Task } from "components/Task";
+import { ITask } from "types/Task";
 import styles from "./styles.module.css";
 
 export function Home() {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [newTask, setNewTask] = useState("");
 
   function handleAddNewTask(event: FormEvent) {
     event.preventDefault();
 
-    setTasks((oldState) => [...oldState, newTask]);
+    setTasks((oldState) => [
+      ...oldState,
+      { id: v4(), content: newTask, isChecked: false },
+    ]);
+    setNewTask("");
+  }
+
+  function handleDeleteTask(taskId: string) {
+    const newListTasks = tasks.filter((task) => task.id !== taskId);
+
+    setTasks(newListTasks);
+  }
+
+  function handleCheckedTask(taskId: string) {
+    const updatedToDoList = tasks.map((task) =>
+      task.id === taskId ? { ...task, isChecked: !task.isChecked } : task
+    );
+
+    setTasks(updatedToDoList);
   }
 
   const EmptyListComponent = (
@@ -26,16 +46,21 @@ export function Home() {
 
   const ListTasksComponent = (
     <div className={styles.list}>
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
-      <Task />
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          data={task}
+          onDeleteTask={handleDeleteTask}
+          onCheckedTask={handleCheckedTask}
+        />
+      ))}
     </div>
   );
 
   const isNewTaskEmpty = newTask.length === 0;
+  const totalTasksCompleted = tasks.filter((task) => task.isChecked).length;
+  const messageCompleted =
+    totalTasksCompleted > 0 ? `${totalTasksCompleted} de ${tasks.length}` : 0;
 
   return (
     <main className={styles.root}>
@@ -53,10 +78,10 @@ export function Home() {
         <section className={styles.sectionTasks}>
           <header>
             <strong className={styles.createdTasksLabel}>
-              Tarefas criadas <span>0</span>
+              Tarefas criadas <span>{tasks.length}</span>
             </strong>
             <strong className={styles.completedTasksLabel}>
-              Concluídas <span>0</span>
+              Concluídas <span>{messageCompleted}</span>
             </strong>
           </header>
           <div className={styles.listTasks}>
