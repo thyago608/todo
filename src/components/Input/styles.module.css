@@ -1,11 +1,12 @@
 .input {
   width: 100%;
+  border: 0;
 
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 8px;
 
   background: var(--gray-500);
-  font-size: var(--base);
+  font-size: var(--sm);
   color: var(--gray-100);
 
   outline: 1px solid transparent;
@@ -18,4 +19,11 @@
 
 .input::placeholder {
   color: var(--gray-300);
+}
+
+@media (min-width: 768px) {
+  .input {
+    padding: 1rem;
+    font-size: var(--base);
+  }
 }

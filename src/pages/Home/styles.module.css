@@ -1,0 +1,102 @@
+.root {
+}
+
+.container {
+  max-width: 800px;
+  margin: -30px auto;
+
+  padding: 0 1rem;
+}
+
+.sectionAddNewTask form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionTasks {
+  margin-top: 64px;
+}
+
+.sectionTasks header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.createdTasksLabel,
+.completedTasksLabel {
+  font-size: var(--sm);
+  font-weight: 700;
+}
+
+.createdTasksLabel {
+  color: var(--blue);
+}
+
+.completedTasksLabel {
+  color: var(--purple);
+}
+
+.createdTasksLabel span,
+.completedTasksLabel span {
+  font-size: var(--xs);
+  color: var(--gray-200);
+
+  background: var(--gray-400);
+
+  display: inline-block;
+
+  padding: 2px 8px;
+  border-radius: 45%;
+}
+
+.listTasks {
+  margin-top: 25px;
+}
+
+.emptinessMessage {
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 64px 0;
+}
+
+.emptinessMessage img {
+  width: 50px;
+  height: 50px;
+}
+
+.emptinessMessage p {
+  max-width: 345px;
+
+  color: var(--gray-300);
+  text-align: center;
+}
+
+.emptinessMessage p::first-line {
+  font-weight: 700;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .sectionAddNewTask form {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1000px;
+  }
+}

@@ -10,12 +10,23 @@
   background: var(--blue-dark);
   color: var(--gray-100);
 
-  font-size: var(--sm);
+  font-size: var(--xs);
   font-weight: bold;
 
   transiton: background-color 0.2s ease;
 }
 
-.root:hover {
+.root:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.root:not(:disabled):hover {
   background: var(--blue);
+}
+
+@media (min-width: 768px) {
+  .root {
+    font-size: var(--sm);
+  }
 }

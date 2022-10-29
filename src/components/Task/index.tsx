@@ -24,7 +24,7 @@ export function Task() {
       </button>
 
       <button type="button" className={styles.deleteButton}>
-        <Trash size={14} weight="bold" />
+        <Trash size={18} weight="bold" />
       </button>
     </div>
   );
