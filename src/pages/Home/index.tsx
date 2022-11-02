@@ -45,7 +45,7 @@ export function Home() {
   );
 
   const ListTasksComponent = (
-    <ul className={styles.list}>
+    <ul className={styles.list} role={"list"}>
       {tasks.map((task) => (
         <Task
           key={task.id}
@@ -66,7 +66,7 @@ export function Home() {
     <main className={styles.root}>
       <div className={styles.container}>
         <section className={styles.sectionAddNewTask}>
-          <form onSubmit={handleAddNewTask}>
+          <form onSubmit={handleAddNewTask} role={"form"}>
             <Input
               placeholder="Adicione uma nova tarefa"
               value={newTask}
